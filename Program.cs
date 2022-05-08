@@ -52,7 +52,7 @@ namespace BinPacking
             //parsing inputs
             generationCount = string.IsNullOrEmpty(generationCountString) ? 50000 : int.Parse(generationCountString);
             poolSize = string.IsNullOrEmpty(poolSizeString) ? 100 : int.Parse(poolSizeString);
-            mutationRate = string.IsNullOrEmpty(mutationRateString) ? 0.01 : int.Parse(mutationRateString);
+            mutationRate = string.IsNullOrEmpty(mutationRateString) ? 0.01 : double.Parse(mutationRateString);
 
             values = valuesString.Replace(" ","").Split(",").Select(a => float.Parse(a)).ToArray();
             size = float.Parse(sizeString);
@@ -129,6 +129,7 @@ namespace BinPacking
 
             //writes fianl result
             Console.WriteLine($"\nfound:\n{String.Join("\n", containerValues)}\n{containers.Count} containers and a score of {score(best)}");
+            Console.ReadKey(true);
         }
 
         //crossingover of two parents
